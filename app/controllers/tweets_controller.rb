@@ -1,4 +1,14 @@
 class TweetsController < ApplicationController
+
+# GET /tweets
+  def index
+    if params[:search].present?
+      @tweets = Tweet.search_by_description_and_username(params[:search]).page(params[:page])
+    else
+      @tweets = Tweet.page(params[:page])
+    end
+  end
+
   before_action :set_tweet, only: %i[ show edit update destroy ]
 
   # GET /tweets or /tweets.json
