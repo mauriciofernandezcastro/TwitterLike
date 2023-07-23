@@ -2,20 +2,6 @@
 
 <h1>Tweets</h1>
 
-<div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New tweet", new_tweet_path %>
-
-<!-- app/views/tweets/index.html.erb -->
-<h1>Tweets</h1>
-
 <%= form_tag(tweets_path, method: 'get') do %>
   <%= text_field_tag :search, params[:search], placeholder: 'Buscar tweets' %>
   <%= submit_tag 'Buscar' %>
@@ -43,5 +29,7 @@
   </tbody>
 </table>
 
-<%= paginate @tweets, theme: 'twitter-bootstrap' %>
+
+<%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: 'pagination justify-content-center' %>
+
 <%= link_to 'New Tweet', new_tweet_path %>

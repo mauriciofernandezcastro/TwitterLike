@@ -28,7 +28,10 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # paginacion
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'will_paginate-bootstrap'
+
 
 # buscador
 gem 'pg_search'
